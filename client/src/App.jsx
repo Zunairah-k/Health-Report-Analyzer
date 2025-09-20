@@ -6,6 +6,7 @@ import {
   Routes,
   Route,
   Navigate,
+  Link,
 } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,8 +24,7 @@ import ContactUs from "./components/ContactUs";
 import { getCurrentUser } from "./utils/api";
 import "./styles/App.css";
 import FAQ from "./components/FAQ";
-import { Link } from "react-router-dom";
-import { FileText, Menu, X, LogOut } from 'lucide-react';
+import { FileText } from "lucide-react";
 import DarkModeToggle from "./components/DarkModeToggle";
 import { useLoading } from "./context/LoadingContext.jsx";
 
@@ -33,7 +33,6 @@ function Dashboard({ user, setUser }) {
   const [reportData, setReportData] = useState(null);
   const [trendData, setTrendData] = useState(null);
   const [error, setError] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const { loading } = useLoading(); // use global loading state
 
@@ -45,7 +44,6 @@ function Dashboard({ user, setUser }) {
     setTrendData(null);
     setError(null);
     toast.success("Successfully logged out. See you again!");
-    setMenuOpen(false);
   };
 
   const handleFileProcessed = (data) => {
@@ -81,7 +79,13 @@ function Dashboard({ user, setUser }) {
 
       <header className="landing-header">
         <div className="landing-header-content">
-          <div className="landing-logo">
+          {/* Logo clickable & keyboard accessible */}
+          <Link
+            to="/"
+            className="landing-logo"
+            aria-label="Go to Home"
+            tabIndex={0}
+          >
             <FileText className="landing-logo-icon" />
            <Link to="/" className="landing-logo-text">
     Health Report Analyzer
@@ -90,33 +94,36 @@ function Dashboard({ user, setUser }) {
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
+
           <div className="nav-button user-section">
-            <Link to="/" className="btn-pill">
+            <Link
+              to="/"
+              className="btn-home"
+              aria-label="Go to Home"
+              tabIndex={0}
+            >
               Home
             </Link>
-            <Link to="/contact" className="btn-pill">
+            <Link
+              to="/contact"
+              className="btn-contact"
+              aria-label="Go to Contact Page"
+              tabIndex={0}
+            >
               Contact Us
             </Link>
+
             <UserProfile
               className="user-section"
               user={user}
               onLogout={handleLogout}
+              aria-label="User Profile and Logout"
+              tabIndex={0}
             />
-            <DarkModeToggle />
+
+            <DarkModeToggle aria-label="Toggle Dark Mode" tabIndex={0} />
           </div>
         </div>
-
-            {/* Mobile Menu Dropdown  */}
-        {menuOpen && (
-          <div className="mobile-menu">
-            <div className="mobile-user-profile">
-              <UserProfile user={user} onLogout={handleLogout} />
-            </div>
-            <Link to="/" className="btn-pill" onClick={() => setMenuOpen(false)}>Home</Link>
-            <Link to="/contact" className="btn-pill" onClick={() => setMenuOpen(false)}>Contact Us</Link>
-            <DarkModeToggle />
-          </div>
-          )}
       </header>
 
       <main className="app-main">
@@ -130,7 +137,12 @@ function Dashboard({ user, setUser }) {
         {error && (
           <div className="error-banner">
             <span>{error}</span>
-            <button onClick={handleReset} className="btn-retry">
+            <button
+              onClick={handleReset}
+              className="btn-retry"
+              tabIndex={0}
+              aria-label="Retry Upload"
+            >
               Try Again
             </button>
           </div>
@@ -147,7 +159,12 @@ function Dashboard({ user, setUser }) {
           <div className="results-section">
             <div className="results-header">
               <h2>📊 Analysis Results</h2>
-              <button onClick={handleReset} className="btn-new-upload">
+              <button
+                onClick={handleReset}
+                className="btn-new-upload"
+                tabIndex={0}
+                aria-label="Upload New Report"
+              >
                 Upload New Report
               </button>
             </div>
@@ -251,7 +268,12 @@ function App() {
                         </p>
                       </div>
                       <div className="header-actions">
-                        <Link to="/" className="btn-home">
+                        <Link
+                          to="/"
+                          className="btn-home"
+                          tabIndex={0}
+                          aria-label="Back to Home"
+                        >
                           Back to Home
                         </Link>
                       </div>
@@ -286,7 +308,12 @@ function App() {
                         </p>
                       </div>
                       <div className="header-actions">
-                        <Link to="/" className="btn-home">
+                        <Link
+                          to="/"
+                          className="btn-home"
+                          tabIndex={0}
+                          aria-label="Back to Home"
+                        >
                           Back to Home
                         </Link>
                       </div>
@@ -318,7 +345,12 @@ function App() {
                         <p>Reset your password</p>
                       </div>
                       <div className="header-actions">
-                        <Link to="/" className="btn-home">
+                        <Link
+                          to="/"
+                          className="btn-home"
+                          tabIndex={0}
+                          aria-label="Back to Home"
+                        >
                           Back to Home
                         </Link>
                       </div>
@@ -350,7 +382,12 @@ function App() {
                         <p>Enter your new password</p>
                       </div>
                       <div className="header-actions">
-                        <Link to="/" className="btn-home">
+                        <Link
+                          to="/"
+                          className="btn-home"
+                          tabIndex={0}
+                          aria-label="Back to Home"
+                        >
                           Back to Home
                         </Link>
                       </div>
@@ -380,7 +417,12 @@ function App() {
                         <p>We'd love to hear from you!</p>
                       </div>
                       <div className="header-actions">
-                        <Link to="/dashboard" className="btn-home">
+                        <Link
+                          to="/dashboard"
+                          className="btn-home"
+                          tabIndex={0}
+                          aria-label="Back to Dashboard"
+                        >
                           Back to Dashboard
                         </Link>
                       </div>
