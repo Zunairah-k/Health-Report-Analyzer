@@ -83,7 +83,9 @@ function Dashboard({ user, setUser }) {
         <div className="landing-header-content">
           <div className="landing-logo">
             <FileText className="landing-logo-icon" />
-            <h1 className="landing-logo-text">Health Report Analyzer</h1>
+           <Link to="/" className="landing-logo-text">
+    Health Report Analyzer
+</Link>
             <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -240,7 +242,9 @@ function App() {
                   <header className="app-header">
                     <div className="header-content">
                       <div className="header-text">
-                        <h1>🏥 Health Report Analyzer</h1>
+                         <Link to="/" className="landing-logo-text">
+    Health Report Analyzer
+</Link>
                         <p>
                           Secure platform to analyze your health reports with AI
                           insights
@@ -273,7 +277,9 @@ function App() {
                   <header className="app-header">
                     <div className="header-content">
                       <div className="header-text">
-                        <h1>🏥 Health Report Analyzer</h1>
+                          <Link to="/" className="landing-logo-text">
+    Health Report Analyzer
+</Link>
                         <p>
                           Secure platform to analyze your health reports with AI
                           insights
@@ -306,7 +312,9 @@ function App() {
                   <header className="app-header">
                     <div className="header-content">
                       <div className="header-text">
-                        <h1>🏥 Health Report Analyzer</h1>
+                          <Link to="/" className="landing-logo-text">
+    Health Report Analyzer
+</Link>
                         <p>Reset your password</p>
                       </div>
                       <div className="header-actions">
@@ -336,7 +344,9 @@ function App() {
                   <header className="app-header">
                     <div className="header-content">
                       <div className="header-text">
-                        <h1>🏥 Health Report Analyzer</h1>
+                           <Link to="/" className="landing-logo-text">
+    Health Report Analyzer
+</Link>
                         <p>Enter your new password</p>
                       </div>
                       <div className="header-actions">
@@ -364,7 +374,9 @@ function App() {
                   <header className="app-header">
                     <div className="header-content">
                       <div className="header-text">
-                        <h1>🏥 Health Report Analyzer</h1>
+                          <Link to="/" className="landing-logo-text">
+    Health Report Analyzer
+</Link>
                         <p>We'd love to hear from you!</p>
                       </div>
                       <div className="header-actions">
